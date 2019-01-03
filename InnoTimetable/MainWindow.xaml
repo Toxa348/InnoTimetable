@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnoTimetable"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="407.082" Width="355">
     <Grid>
-        
+        <Button x:Name="today" Content="Сегодня" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="today_Click"/>
+        <Button x:Name="tomorrow" Content="Завтра" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75" Click="tomorrow_Click"/>
+        <Button x:Name="week" Content="Неделя" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="75" Click="week_Click"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="331" Margin="10,35,0,0" VerticalAlignment="Top" Width="327">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Subject" Width="172" DisplayMemberBinding="{Binding Subject}"/>
+                    <GridViewColumn Header="Teacher" Width="100" DisplayMemberBinding="{Binding Teacher}"/>
+                    <GridViewColumn Header="Room" Width="50" DisplayMemberBinding="{Binding Room}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
