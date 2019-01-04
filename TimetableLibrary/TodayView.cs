@@ -22,23 +22,34 @@ namespace TimetableLibrary
         
         public List<Lession> getValuesList()
         {
-            todayValues = weekValues[getTodayDay()];
-            foreach(string element in todayValues)
+            if (getTodayDay() > weekValues.Count())
             {
-                if (element != "")
-                {
-                    parseLession(element);
-                }
-                else
+                for (int i = 0; i < 8; i++)
                 {
                     todayLession.Add(new Lession());
                 }
+                return todayLession;
             }
-            return todayLession;
+            else
+            {
+                todayValues = weekValues[getTodayDay()-1];
+                foreach (string element in todayValues)
+                {
+                    if (element != "")
+                    {
+                        parseLession(element);
+                    }
+                    else
+                    {
+                        todayLession.Add(new Lession());
+                    }
+                }
+                return todayLession;
+            }
         }
         private int getTodayDay()
         {
-            return (int)(DateTime.Now.DayOfWeek+6)%7;
+            return (int)(DateTime.Now.DayOfWeek);
         }
         private void parseLession(String element)
         {

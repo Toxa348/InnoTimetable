@@ -13,9 +13,9 @@
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="331" Margin="10,35,0,0" VerticalAlignment="Top" Width="327">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Subject" Width="172" DisplayMemberBinding="{Binding Subject}"/>
-                    <GridViewColumn Header="Teacher" Width="100" DisplayMemberBinding="{Binding Teacher}"/>
-                    <GridViewColumn Header="Room" Width="50" DisplayMemberBinding="{Binding Room}"/>
+                    <GridViewColumn Header="Subject" Width="172" DisplayMemberBinding="{Binding title}"/>
+                    <GridViewColumn Header="Teacher" Width="100" DisplayMemberBinding="{Binding professor}"/>
+                    <GridViewColumn Header="Room" Width="50" DisplayMemberBinding="{Binding room}"/>
                 </GridView>
             </ListView.View>
         </ListView>

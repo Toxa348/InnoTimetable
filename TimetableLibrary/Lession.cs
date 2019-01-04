@@ -21,9 +21,9 @@ namespace TimetableLibrary
         }
         public Lession()
         {
-            this.title = "";
-            this.professor = "";
-            this.room = "";
+            this.title = "-";
+            this.professor = "-";
+            this.room = "-";
         }
     }
 }

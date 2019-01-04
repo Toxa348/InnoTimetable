@@ -32,6 +32,7 @@ namespace InnoTimetable
         {
             if(showMode!= ShowMode.today)
             {
+                listView.Items.Clear();
                 showMode = ShowMode.today;
                 ViewMode viewMode = new TodayView(dataParser);
                 foreach(Lession lession in viewMode.getValuesList())
@@ -48,6 +49,7 @@ namespace InnoTimetable
         {
             if (showMode != ShowMode.tomorrow)
             {
+                listView.Items.Clear();
                 showMode = ShowMode.tomorrow;
 
             }
@@ -57,6 +59,7 @@ namespace InnoTimetable
         {
             if (showMode != ShowMode.week)
             {
+                listView.Items.Clear();
                 showMode = ShowMode.week;
 
             }
