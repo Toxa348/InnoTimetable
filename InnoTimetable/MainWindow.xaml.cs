@@ -25,7 +25,6 @@ namespace InnoTimetable
             InitializeComponent();
             DataLoader dataLoader = new GoogleApiLoader();
             dataParser = new DataParser(dataLoader.getCellsData("1yXXOK2eP3oaUF6Io0g6NB8EhJqSOBBODAf_4vNyIi1w", "V1:W33"));
-
         }
 
         private void today_Click(object sender, RoutedEventArgs e)
@@ -38,10 +37,7 @@ namespace InnoTimetable
                 foreach(Lession lession in viewMode.getValuesList())
                 {
                     listView.Items.Add(lession);
-                        
                 }
-
-                //listBox.Items.Add
             }
         }
 
@@ -51,7 +47,11 @@ namespace InnoTimetable
             {
                 listView.Items.Clear();
                 showMode = ShowMode.tomorrow;
-
+                ViewMode viewMode = new TomorrowView(dataParser);
+                foreach (Lession lession in viewMode.getValuesList())
+                {
+                    listView.Items.Add(lession);
+                }
             }
         }
 
@@ -61,7 +61,8 @@ namespace InnoTimetable
             {
                 listView.Items.Clear();
                 showMode = ShowMode.week;
-
+                WeekWindow weekWindow = new WeekWindow();
+                weekWindow.Show();
             }
         }
         enum ShowMode

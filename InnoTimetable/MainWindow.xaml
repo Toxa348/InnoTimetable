@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnoTimetable"
         mc:Ignorable="d"
-        Title="MainWindow" Height="407.082" Width="355">
+        Title="InnoTimetable" Height="411.882" Width="455.8" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="today" Content="Сегодня" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="today_Click"/>
-        <Button x:Name="tomorrow" Content="Завтра" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="75" Click="tomorrow_Click"/>
-        <Button x:Name="week" Content="Неделя" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="75" Click="week_Click"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="331" Margin="10,35,0,0" VerticalAlignment="Top" Width="327">
+        <Button x:Name="today" Content="Сегодня" HorizontalAlignment="Left" Margin="11,346,0,0" VerticalAlignment="Top" Width="75" Click="today_Click"/>
+        <Button x:Name="tomorrow" Content="Завтра" HorizontalAlignment="Left" Margin="91,346,0,0" VerticalAlignment="Top" Width="75" Click="tomorrow_Click"/>
+        <Button x:Name="week" Content="Неделя" HorizontalAlignment="Left" Margin="171,346,0,0" VerticalAlignment="Top" Width="75" Click="week_Click"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="331" Margin="10,10,0,0" VerticalAlignment="Top" Width="430">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Subject" Width="172" DisplayMemberBinding="{Binding title}"/>
-                    <GridViewColumn Header="Teacher" Width="100" DisplayMemberBinding="{Binding professor}"/>
-                    <GridViewColumn Header="Room" Width="50" DisplayMemberBinding="{Binding room}"/>
+                    <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                    <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                    <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
                 </GridView>
             </ListView.View>
         </ListView>

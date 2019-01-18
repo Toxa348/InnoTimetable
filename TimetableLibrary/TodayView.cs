@@ -47,7 +47,7 @@ namespace TimetableLibrary
                 return todayLession;
             }
         }
-        private int getTodayDay()
+        protected virtual int getTodayDay()
         {
             return (int)(DateTime.Now.DayOfWeek);
         }
