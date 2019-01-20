@@ -51,7 +51,7 @@ namespace TimetableLibrary
                     dayValues = new List<string>();
                     lecturesIter = 0;
                 }
-                //Щас последний день собирается но не добавляется в неделю
+                
             }
 
         }

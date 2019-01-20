@@ -1,0 +1,26 @@
+﻿<Page x:Class="InnoTimetable.NormalPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InnoTimetable"
+      mc:Ignorable="d" 
+      d:DesignHeight="411.882" d:DesignWidth="455.8"
+      Title="NormalPage" WindowHeight="411" WindowWidth="456" ShowsNavigationUI="False">
+
+    <Grid Background="#FFF">
+        <Button x:Name="today" Content="Сегодня" HorizontalAlignment="Left" Margin="11,346,0,0" VerticalAlignment="Top" Width="75" Click="today_Click"/>
+        <Button x:Name="tomorrow" Content="Завтра" HorizontalAlignment="Left" Margin="91,346,0,0" VerticalAlignment="Top" Width="75" Click="tomorrow_Click"/>
+        <Button x:Name="week" Content="Неделя" HorizontalAlignment="Left" Margin="171,346,0,0" VerticalAlignment="Top" Width="75" Click="week_Click"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="331" Margin="10,10,0,0" VerticalAlignment="Top" Width="430">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                    <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                    <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

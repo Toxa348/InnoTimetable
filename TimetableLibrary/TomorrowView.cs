@@ -14,7 +14,7 @@ namespace TimetableLibrary
         }
         protected override int getTodayDay()
         {
-            return (int)(DateTime.Today.AddDays(1+4).DayOfWeek);
+            return (int)(DateTime.Today.AddDays(1).DayOfWeek);
         }
     }
 }
