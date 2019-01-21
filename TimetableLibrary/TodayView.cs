@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TimetableLibrary
 {
-    public interface ViewMode
+    public interface IViewMode
     {
-        List<Lession> getValuesList();
+        List<Lesson> getValuesList();
     }
-    public class TodayView : ViewMode
+    public class TodayView : IViewMode
     {
-        private List<Lession> todayLession = new List<Lession>();
+        private List<Lesson> todayLession = new List<Lesson>();
         private List<List<string>> weekValues;
         private List<string> todayValues = new List<string>();
         public TodayView(DataParser dataParser)
@@ -20,13 +20,15 @@ namespace TimetableLibrary
             weekValues = dataParser.getWeekValues();
         }
         
-        public List<Lession> getValuesList()
+        public List<Lesson> getValuesList()
         {
+            int todayDay;
             if (getTodayDay() > weekValues.Count())
             {
+                todayDay = getTodayDay();
                 for (int i = 0; i < 8; i++)
                 {
-                    todayLession.Add(new Lession());
+                    todayLession.Add(new Lesson());
                 }
                 return todayLession;
             }
@@ -37,11 +39,11 @@ namespace TimetableLibrary
                 {
                     if (element != "")
                     {
-                        parseLession(element);
+                        todayLession.Add(parseLesson(element));
                     }
                     else
                     {
-                        todayLession.Add(new Lession());
+                        todayLession.Add(new Lesson());
                     }
                 }
                 return todayLession;
@@ -51,11 +53,12 @@ namespace TimetableLibrary
         {
             return (int)(DateTime.Now.DayOfWeek);
         }
-        private void parseLession(String element)
+        protected Lesson parseLesson(String element)
         {
-            string[] lessionValues = element.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
-            Lession lession = new Lession(lessionValues[0], lessionValues[1], lessionValues[2]);
-            todayLession.Add(lession);
+            string[] lessionValues = element.Split(new[] {  @"
+" , "\n"}, StringSplitOptions.RemoveEmptyEntries); // "  ",
+            Lesson lession = new Lesson(lessionValues[0], lessionValues[1], lessionValues[2]);
+            return lession;
         }
     }
 }
