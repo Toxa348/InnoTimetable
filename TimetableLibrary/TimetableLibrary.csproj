@@ -73,6 +73,7 @@
     <Compile Include="GoogleApiLoader.cs" />
     <Compile Include="Lesson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeekView.cs" />
     <Compile Include="TodayView.cs" />
     <Compile Include="TomorrowView.cs" />
   </ItemGroup>
