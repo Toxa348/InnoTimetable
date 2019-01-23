@@ -3,7 +3,7 @@ using TimetableLibrary;
 
 namespace InnoTimetable
 {
-    internal class WeekView : TodayView
+    public class WeekView : TodayView
     {
         private List<List<string>> weekValues;
         List<List<Lesson>> finalWeekSchedule = new List<List<Lesson>>();

@@ -15,7 +15,7 @@ namespace TimetableLibrary
         private List<Lesson> todayLession = new List<Lesson>();
         private List<List<string>> weekValues;
         private List<string> todayValues = new List<string>();
-        public TodayView(DataParser dataParser)
+        public TodayView(DataParser dataParser) //Баг тут, после недельной вьюхи при переходе на завтра два раза вызывается конструктор с нулл
         {
             weekValues = dataParser.getWeekValues();
         }

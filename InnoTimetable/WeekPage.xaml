@@ -6,32 +6,83 @@
       xmlns:local="clr-namespace:InnoTimetable"
       mc:Ignorable="d" 
       d:DesignHeight="300"
-      Title="WeekPage" Height="711" ShowsNavigationUI="False" Width="456" Loaded="Page_Loaded">
+      Title="WeekPage" Height="700" ShowsNavigationUI="False" Width="483.2" Loaded="Page_Loaded">
+    <Grid Height="700" Background="White">
 
-    <Grid Background="White">
-        <ListView x:Name="mondayList" HorizontalAlignment="Left" Height="240" Margin="10,28,0,0" VerticalAlignment="Top" Width="430" Grid.ColumnSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
-                    <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
-                    <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView x:Name="tuesdayList" HorizontalAlignment="Left" Height="254" Margin="10,304,0,0" VerticalAlignment="Top" Width="430">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
-                    <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
-                    <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label x:Name="label" Content="Monday" HorizontalAlignment="Left" Margin="205,0,0,0" VerticalAlignment="Top" Width="57" Height="26"/>
-        <Label x:Name="label_Copy" Content="Tuesday" HorizontalAlignment="Left" Margin="205,273,0,0" VerticalAlignment="Top" Width="57" Height="26"/>
-        <Button x:Name="today" Content="Сегодня" HorizontalAlignment="Left" Margin="10,683,0,0" VerticalAlignment="Top" Width="75" Click="today_Click"/>
-        <Button x:Name="tomorrow" Content="Завтра" HorizontalAlignment="Left" Margin="90,683,0,0" VerticalAlignment="Top" Width="75" Click="tomorrow_Click"/>
-        <Button x:Name="week" Content="Неделя" HorizontalAlignment="Left" Margin="170,683,0,0" VerticalAlignment="Top" Width="75" Click="week_Click"/>
-
+        <ScrollViewer Margin="5,0,10.2,-9" HorizontalScrollBarVisibility="Disabled"  VerticalAlignment="Bottom" Height="709">
+            <Grid Background="White" Width="465" Height="1754">
+                <ListView x:Name="mondayList" Height="240" Margin="10,28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="430"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                            <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                            <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView x:Name="tuesdayList" HorizontalAlignment="Left" Height="254" Margin="10,304,0,0" VerticalAlignment="Top" Width="430"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                            <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                            <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label" Content="Monday" HorizontalAlignment="Left" Margin="205,5,0,0" VerticalAlignment="Top" Width="57" Height="26"/>
+                <Label x:Name="label_Copy" Content="Tuesday" HorizontalAlignment="Left" Margin="205,273,0,0" VerticalAlignment="Top" Width="57" Height="26"/>
+                <ListView x:Name="wednesdayList" HorizontalAlignment="Left" Height="254" Margin="10,594,0,0" VerticalAlignment="Top" Width="430"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                            <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                            <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label_Copy1" Content="Wednesday" HorizontalAlignment="Left" Margin="195,563,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+                <ListView x:Name="thursdayList" HorizontalAlignment="Left" Height="254" Margin="10,884,0,0" VerticalAlignment="Top" Width="430"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                            <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                            <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label_Copy2" Content="Thursday" HorizontalAlignment="Left" Margin="205,853,0,0" VerticalAlignment="Top" Width="65" Height="26"/>
+                <ListView x:Name="fridayList" HorizontalAlignment="Left" Height="254" Margin="10,1174,0,0" VerticalAlignment="Top" Width="430"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                            <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                            <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label_Copy3" Content="Friday" HorizontalAlignment="Left" Margin="216,1143,0,0" VerticalAlignment="Top" Width="46" Height="26"/>
+                <ListView x:Name="saturdayList" HorizontalAlignment="Left" Height="254" Margin="10,1464,0,0" VerticalAlignment="Top" Width="430"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Subject" Width="220" DisplayMemberBinding="{Binding title}"/>
+                            <GridViewColumn Header="Teacher" Width="150" DisplayMemberBinding="{Binding professor}"/>
+                            <GridViewColumn Header="Room" Width="60" DisplayMemberBinding="{Binding room}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label_Copy4" Content="Saturday" HorizontalAlignment="Left" Margin="205,1433,0,0" VerticalAlignment="Top" Width="57" Height="26"/>
+            </Grid>
+        </ScrollViewer>
+        <Button x:Name="today" Content="Сегодня" HorizontalAlignment="Left" Margin="10,674,0,0" VerticalAlignment="Top" Width="75" Click="today_Click"/>
+        <Button x:Name="tomorrow" Content="Завтра" HorizontalAlignment="Left" Margin="90,674,0,0" VerticalAlignment="Top" Width="75" Click="tomorrow_Click"/>
+        <Button x:Name="week" Content="Неделя" HorizontalAlignment="Left" Margin="170,674,0,0" VerticalAlignment="Top" Width="75" Click="week_Click"/>
     </Grid>
+
+
 </Page>

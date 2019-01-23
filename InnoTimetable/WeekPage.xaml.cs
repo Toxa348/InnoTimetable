@@ -16,9 +16,6 @@ using TimetableLibrary;
 
 namespace InnoTimetable
 {
-    /// <summary>
-    /// Логика взаимодействия для WeekPage.xaml
-    /// </summary>
     public partial class WeekPage : Page
     {
         private DataParser dataParser;
@@ -26,21 +23,22 @@ namespace InnoTimetable
         {
             this.dataParser = dataParser;
             InitializeComponent();
+            
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            this.ShowsNavigationUI = false;
             WeekView weekView = new WeekView(dataParser);
             List<List<Lesson>> finalFillSchedule = weekView.getWeekValues();
-            foreach (var FillLesson in finalFillSchedule[0])
+            var weekLists = FindVisualChildren<ListView>(this);
+            for (int i = 0; i < finalFillSchedule.Count(); i++)
             {
-                mondayList.Items.Add(FillLesson);
+                foreach (var FillLesson in finalFillSchedule[i])
+                {
+                    weekLists.ElementAt(i).Items.Add(FillLesson);
+                }
             }
-            foreach (var FillLesson in finalFillSchedule[1])
-            {
-                tuesdayList.Items.Add(FillLesson);
-            }
-
         }
 
         private void today_Click(object sender, RoutedEventArgs e)
@@ -53,12 +51,34 @@ namespace InnoTimetable
 
         private void tomorrow_Click(object sender, RoutedEventArgs e)
         {
-
+            if (NormalPage.showMode != NormalPage.ShowMode.tomorrow)
+            {
+                this.NavigationService.Navigate(new NormalPage(dataParser)); // if this return dataParser then start the constructor with tomorrow view launcher
+            }
         }
 
         private void week_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
     }
 }

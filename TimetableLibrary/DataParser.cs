@@ -28,7 +28,7 @@ namespace TimetableLibrary
             int daysIter = 0;
             List<string> dayValues = new List<string>();
 
-            int lastDayLessionNumber = parsedValues.Count() % 9;
+            int lastDayLessionNumber = parsedValues.Count() % 9; //Гугл API обрезает количество значений до последнего заполненого поля
             if (lastDayLessionNumber != 0)
             {//Если количество пар обрезало до последнего существующего значения
                 roundParsedValuesUp(lastDayLessionNumber);//Округляем количество пар до целого последнего дня

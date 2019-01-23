@@ -19,15 +19,16 @@ namespace InnoTimetable
     public partial class NormalPage : Page
     {
         DataParser dataParser;
-        public static ShowMode showMode = ShowMode.today;
+        public static ShowMode showMode;
+
         public NormalPage()
         {
             InitializeComponent();
             DataLoader dataLoader = new GoogleApiLoader();
-            
+            showMode = ShowMode.today;
             try
             {
-                dataParser = new DataParser(dataLoader.getCellsData("1nWzmxw2_OMfGkqfJZIkKBfFpS_gOTPDIEHOrGeYwwOg", "Z1:AA55"));
+                dataParser = new DataParser(dataLoader.getCellsData("1nWzmxw2_OMfGkqfJZIkKBfFpS_gOTPDIEHOrGeYwwOg", "Z1:Z55"));
             }
             catch (Exception)
             {
@@ -35,6 +36,21 @@ namespace InnoTimetable
             }
             //1yXXOK2eP3oaUF6Io0g6NB8EhJqSOBBODAf_4vNyIi1w   V1:W33    Autumn
             //1nWzmxw2_OMfGkqfJZIkKBfFpS_gOTPDIEHOrGeYwwOg   Z1:AA55    Spring
+
+        }
+
+        public NormalPage(DataParser dataParser) //Constructor for tomorrow schedule from week page
+        {
+            InitializeComponent();
+            if (showMode != ShowMode.tomorrow)
+            {
+                showMode = ShowMode.tomorrow;
+                IViewMode viewMode = new TomorrowView(dataParser);
+                foreach (Lesson lession in viewMode.getValuesList())
+                {
+                    listView.Items.Add(lession);
+                }
+            }
         }
 
         private void today_Click(object sender, RoutedEventArgs e)
@@ -72,6 +88,7 @@ namespace InnoTimetable
                 listView.Items.Clear();
                 showMode = ShowMode.week;
                 Application.Current.MainWindow.Height = 800;
+                Application.Current.MainWindow.Top = 0;
                 this.NavigationService.Navigate(new WeekPage(dataParser));
                 //NavigationService.Navigate(new Uri("WeekPage.xaml", UriKind.Relative));
             }
@@ -82,6 +99,14 @@ namespace InnoTimetable
             tomorrow,
             week
 
+        }
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            IViewMode viewMode = new TodayView(dataParser);
+            foreach (Lesson lession in viewMode.getValuesList())
+            {
+                listView.Items.Add(lession);
+            }
         }
     }
 }
