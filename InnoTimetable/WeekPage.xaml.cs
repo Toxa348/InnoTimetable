@@ -28,7 +28,7 @@ namespace InnoTimetable
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.ShowsNavigationUI = false;
+
             WeekView weekView = new WeekView(dataParser);
             List<List<Lesson>> finalFillSchedule = weekView.getWeekValues();
             var weekLists = FindVisualChildren<ListView>(this);
@@ -45,6 +45,7 @@ namespace InnoTimetable
         {
             if (NormalPage.showMode != NormalPage.ShowMode.today)
             {
+                Application.Current.MainWindow.Height = 350;
                 this.NavigationService.Navigate(new NormalPage());
             }
         }
@@ -53,6 +54,7 @@ namespace InnoTimetable
         {
             if (NormalPage.showMode != NormalPage.ShowMode.tomorrow)
             {
+                Application.Current.MainWindow.Height = 350;
                 this.NavigationService.Navigate(new NormalPage(dataParser)); // if this return dataParser then start the constructor with tomorrow view launcher
             }
         }
@@ -78,6 +80,27 @@ namespace InnoTimetable
                         yield return childOfChild;
                     }
                 }
+            }
+        }
+
+        private void MyMouseWheelH(object sender, RoutedEventArgs e)
+        {
+
+            MouseWheelEventArgs eargs = (MouseWheelEventArgs)e;
+
+            double x = (double)eargs.Delta;
+
+            double y = scrollBar.VerticalOffset;
+
+            scrollBar.ScrollToVerticalOffset(y - x);
+        }
+
+        private void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            var weekLists = FindVisualChildren<ListView>(this);
+            foreach (var listview in weekLists)
+            {
+                listview.AddHandler(MouseWheelEvent, new RoutedEventHandler(MyMouseWheelH), true);
             }
         }
     }

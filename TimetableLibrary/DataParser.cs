@@ -41,7 +41,10 @@ namespace TimetableLibrary
                 {
                     dayValue = dayValue + s;
                 }
-                dayValues.Add(dayValue); //lecturesIter,  убрал индекс
+                if (lecturesIter!=0)
+                {
+                    dayValues.Add(dayValue);
+                }
                 lecturesIter++;
 
                 if (lecturesIter == 9)

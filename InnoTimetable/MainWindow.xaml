@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnoTimetable"
         mc:Ignorable="d"
-        Title="InnoTimetable" Height="323.431" Width="486" ResizeMode="NoResize"
+        Title="InnoTimetable" Height="323.431" Width="560"  ResizeMode="NoResize"
         WindowStartupLocation="Manual" 
         Left="950" Top="500">
     <Grid>
-        <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Margin="10,10,0,-19.6" VerticalAlignment="Top" Width="460" Source="NormalPage.xaml"/>
+        <Frame x:Name="frame" Content="Frame" HorizontalAlignment="Left" Margin="10,10,0,-19.6" VerticalAlignment="Top"  Source="NormalPage.xaml" />
     </Grid>
 </Window>

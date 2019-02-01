@@ -36,11 +36,13 @@ namespace InnoTimetable
             }
             //1yXXOK2eP3oaUF6Io0g6NB8EhJqSOBBODAf_4vNyIi1w   V1:W33    Autumn
             //1nWzmxw2_OMfGkqfJZIkKBfFpS_gOTPDIEHOrGeYwwOg   Z1:AA55    Spring
-
+            loadToday();
         }
 
         public NormalPage(DataParser dataParser) //Constructor for tomorrow schedule from week page
         {
+            this.dataParser = dataParser;
+
             InitializeComponent();
             if (showMode != ShowMode.tomorrow)
             {
@@ -59,11 +61,16 @@ namespace InnoTimetable
             {
                 listView.Items.Clear();
                 showMode = ShowMode.today;
-                IViewMode viewMode = new TodayView(dataParser);
-                foreach (Lesson lession in viewMode.getValuesList())
-                {
-                    listView.Items.Add(lession);
-                }
+                loadToday();
+            }
+        }
+
+        private void loadToday()
+        {
+            IViewMode viewMode = new TodayView(dataParser);//тут баг
+            foreach (Lesson lession in viewMode.getValuesList())
+            {
+                listView.Items.Add(lession);
             }
         }
 
@@ -90,7 +97,6 @@ namespace InnoTimetable
                 Application.Current.MainWindow.Height = 800;
                 Application.Current.MainWindow.Top = 0;
                 this.NavigationService.Navigate(new WeekPage(dataParser));
-                //NavigationService.Navigate(new Uri("WeekPage.xaml", UriKind.Relative));
             }
         }
         public enum ShowMode
@@ -99,14 +105,6 @@ namespace InnoTimetable
             tomorrow,
             week
 
-        }
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            IViewMode viewMode = new TodayView(dataParser);
-            foreach (Lesson lession in viewMode.getValuesList())
-            {
-                listView.Items.Add(lession);
-            }
         }
     }
 }

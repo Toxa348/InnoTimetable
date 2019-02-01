@@ -12,20 +12,24 @@ namespace TimetableLibrary
     }
     public class TodayView : IViewMode
     {
-        private List<Lesson> todayLession = new List<Lesson>();
+        private List<Lesson> todayLession;
         private List<List<string>> weekValues;
-        private List<string> todayValues = new List<string>();
-        public TodayView(DataParser dataParser) //Баг тут, после недельной вьюхи при переходе на завтра два раза вызывается конструктор с нулл
+        private List<string> todayValues;
+
+        public TodayView()
+        {
+        }
+
+        public TodayView(DataParser dataParser)
         {
             weekValues = dataParser.getWeekValues();
         }
         
         public List<Lesson> getValuesList()
         {
-            int todayDay;
+            todayLession = new List<Lesson>();
             if (getTodayDay() > weekValues.Count())
             {
-                todayDay = getTodayDay();
                 for (int i = 0; i < 8; i++)
                 {
                     todayLession.Add(new Lesson());
